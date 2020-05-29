@@ -10,7 +10,8 @@ services:
       driver: bridge
       internal: true
 
-  mysql-server:5.6
+  mysql-server:
+    image: mysql:5.6
     restart: unless-stopped
     command:
       - mysqld
@@ -23,8 +24,10 @@ services:
    #   - --ssl-key=/run/secrets/server-key.pem
     volumes:
       - ./zbx_env/var/lib/mysql:/var/lib/mysql:rw
-    env_file:
-      - .env_db_mysql
+    ports:
+      3336:3306
+   # env_file:
+   #   - .env_db_mysql
     secrets:
       - MYSQL_USER
       - MYSQL_PASSWORD
@@ -34,6 +37,7 @@ services:
   #   - root-ca.pem
     stop_grace_period: 1m
     networks:
+      gik_frontend:
       gik_backend:
         aliases:
           - mysql-server
