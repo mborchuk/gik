@@ -5,7 +5,6 @@ services:
   networks:
     gik_frontend:
       driver: bridge
-
     gik_backend:
       driver: bridge
       internal: true
@@ -29,8 +28,8 @@ services:
    # env_file:
    #   - .env_db_mysql
     secrets:
-      - MYSQL_USER
-      - MYSQL_PASSWORD
+  #    - MYSQL_USER
+  #    - MYSQL_PASSWORD
       - MYSQL_ROOT_PASSWORD
   #   - server-key.pem
   #   - server-cert.pem
