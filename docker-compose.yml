@@ -1,13 +1,21 @@
 version: '3.5'
 
-services:
+networks:
+  gik_frontend:
+    driver: bridge
+  gik_backend:
+    driver: bridge
+    internal: true
+    
+secrets:
+#  MYSQL_USER:
+#    file: ./.MYSQL_USER
+#  MYSQL_PASSWORD:
+#    file: ./.MYSQL_PASSWORD
+  MYSQL_ROOT_PASSWORD:
+    file: ./.MYSQL_ROOT_PASSWORD
 
-  networks:
-    gik_frontend:
-      driver: bridge
-    gik_backend:
-      driver: bridge
-      internal: true
+services:
 
   mysql-server:
     image: mysql:5.6
@@ -52,10 +60,3 @@ services:
       gik_frontend:
       gik_backend:
       
-  secrets:
-  #  MYSQL_USER:
-  #    file: ./.MYSQL_USER
-  #  MYSQL_PASSWORD:
-  #    file: ./.MYSQL_PASSWORD
-    MYSQL_ROOT_PASSWORD:
-      file: ./.MYSQL_ROOT_PASSWORD
