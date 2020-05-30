@@ -31,7 +31,7 @@ services:
     volumes:
       - ./gik_env/var/lib/mysql:/var/lib/mysql:rw
     ports:
-      - 3336:3306
+      - 3306:3306
     env_file:
       - .env_db_mysql
     secrets:
